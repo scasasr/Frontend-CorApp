@@ -78,18 +78,19 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
                                 <a href="contact.html" class="nav-item nav-link">Nosotros</a>
                             </div>
                             {
-                                logged ? 
+                                // console.log((logged === true))
+                                (logged === "true") ? 
                                 (
                                     <>
                                         <div className="userTest">
-                                            <Icon> account_circle</Icon>
-                                            <div className="userdata">
-                                                <p>{cookie.get('name')+" "+cookie.get('lastname')}</p>
-                                                <p>{cookie.get('email')}</p>
-                                                <p>{cookie.get('role')}</p>
+                                            <div className="containerData">
+                                                <Icon> account_circle</Icon>
+                                                <div className="userdata">
+                                                    <p>{cookie.get('name')+" "+cookie.get('lastname')}</p>
+                                                    <p>{cookie.get('email')}</p>
+                                                    <p>{cookie.get('role')}</p>
+                                                </div>
                                             </div>
-
-
                                         </div>
                                     </>
                                 ):(

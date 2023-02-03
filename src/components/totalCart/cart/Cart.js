@@ -1,11 +1,10 @@
-import { StyleRounded } from "@mui/icons-material";
 import React, { useContext, useEffect, useState } from "react";
 import { cartContext } from "../context/CartContext.js";
 import ItemCart from "../ItemCart/ItemCart.js";
 import style from './style.module.scss';
 //cookie component import
 import Cookies from "universal-cookie";
-import { Link } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Cart = () =>{
     const [cartOpen, setCartOpen] =useState(false)
@@ -15,7 +14,8 @@ const Cart = () =>{
 
 
     var cookie = new Cookies();
-    let logged = cookie.get('logged');
+
+    const logged = cookie.get('logged');
 
 
      useEffect(()=>{
@@ -92,7 +92,26 @@ const Cart = () =>{
                 )}
                 <h2 className={style.total}>Total: ${total}</h2>
                 <div>
-                      <button className={style.btn_pay} onClick={logged ? (<Link to="/login"/>):(<p></p>)}>PAGAR</button>
+                      {/* {console.log(typeof(logged))} */}
+                      {(logged==="true") ?
+                      (<>
+                        <Link as={Link} to='/Bill'>
+                          {console.log('hello')}
+                          <div>
+                            <button className={style.btn_pay}>Pagar
+                            </button>
+                          </div>
+                        </Link>
+                      </>)
+                      :(<>
+                        <Link as={Link} to='/login'>
+                          <div>
+                            <button className={style.btn_pay}>Pagar
+                            </button>
+                          </div>
+                          
+                        </Link>
+                      </>)}
                 </div>
               </div>
               </>

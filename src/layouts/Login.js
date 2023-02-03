@@ -68,7 +68,7 @@ const Login = () =>{
                     formik.resetForm();
                     cookie.set('user_id',response.data["partner"]["_id"],{path:"/"});
                     cookie.set('name',response.data["partner"]["name"], {path:"/"});
-                    cookie.set('lastname',response.data["partner"]["lastname"], {path:"/"});
+                    cookie.set('lastname',response.data["partner"]["last_name"], {path:"/"});
                     cookie.set('email',response.data["partner"]["email"],{path:"/"});
                     cookie.set('role',response.data["role_name"],{path:"/"});
                     cookie.set("logged", true, { path: '/' });
@@ -102,7 +102,7 @@ const Login = () =>{
     return(
         <>
         {/*NAVBAR START*/}
-        <div class="container-fluid sidebar">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 bg-secondary d-none d-lg-block"> 
                     <a href='/' class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
@@ -206,10 +206,13 @@ const Login = () =>{
                         />
                     </div>
                     {formik.touched.password && formik.errors.password ? <div className="error">{formik.errors.password}</div> : null}
+                    
                     <div> 
                     <button className="btn btn-primary"type="submit">Enviar</button>
                     </div>
+
                     {error && <p className="error">{message}</p>}
+
                     <Nav.Link as={Link} to="/RegisterCB">
                         <small>¿No estas registrado?</small>
                     </Nav.Link>

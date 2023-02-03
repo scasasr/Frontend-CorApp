@@ -1,15 +1,23 @@
 import './App.css';
 
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Main from './layouts/Main.js';
 import Login from './layouts/Login.js';
 import RoleSelect from './layouts/Role_select.js';
 import Register from './layouts/Register.js';
-import Buyer from './layouts/dashboards/Buyer.js';
-import Beneficiary from './layouts/dashboards/Beneficiary.js';
-import Seller from './layouts/dashboards/Seller.js';
-import Admin from './layouts/dashboards/Admin.js';
+import Buyer from './layouts/Buyer.js';
+import Admin from './layouts/Admin.js';
+import Clients from './layouts/adminPages/Clients.js';
+import Countries from './layouts/adminPages/Countries.js';
+import Cities from './layouts/adminPages/Cities.js';
+import Squares from './layouts/adminPages/Squares.js';
+import Warehouses from './layouts/adminPages/Warehouses.js';
+import Places from './layouts/adminPages/Places.js';
+import Products from './layouts/adminPages/Products.js';
+import Bill from './layouts/Bill.js'
+
+
 
 
 function App() {
@@ -22,11 +30,20 @@ function App() {
             <Route path='RoleSelect' element={<RoleSelect/>}/>
             <Route path='RegisterCB' element={<Register/>}/>
             <Route path='Buyer' element={<Buyer/>}/>
-            <Route path='Beneficiary' element={<Beneficiary/>}/>
-            <Route path='Seller' element={<Seller/>}/>
-            <Route path='Admin' element={<Admin/>}/>
-            
+            <Route path="Admin/" element={<Admin/>}>
+              <Route path='Vendedores' element={<Clients/>}/>
+              <Route path='Compradores' element={<Clients/>}/>
+              <Route path='Beneficiarios' element={<Clients/>}/>
+              <Route path='Paises' element={<Countries/>}/>
+              <Route path='Ciudades' element={<Cities/>}/>
+              <Route path='Plazas' element={<Squares/>}/>
+              <Route path='Bodegas' element={<Warehouses/>}/>
+              <Route path='Puestos' element={<Places/>}/>
+              <Route path='Productos' element={<Products/>}/>
 
+            </Route>
+            <Route path='Bill'element={<Bill/>}/>
+            
         </Routes>
       </BrowserRouter>
     </div>
