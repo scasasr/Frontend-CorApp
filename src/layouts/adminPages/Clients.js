@@ -186,7 +186,7 @@ const Clients = (role) => {
     const getClients = async () =>{
             return await API.get(url).then((response) =>{
             setDataClients(JSON.parse(JSON.stringify(response.data)));
-            console.log(dataClients);
+            // console.log(dataClients);
         }).catch((error)=>{
             console.log(error);
         })
@@ -194,7 +194,7 @@ const Clients = (role) => {
 
     useEffect(()=>{
         getClients();
-    },[]);
+    },[showSendVerification]);
 
 
     // console.log(initialValues);

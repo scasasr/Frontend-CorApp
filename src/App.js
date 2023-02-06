@@ -16,6 +16,8 @@ import Warehouses from './layouts/adminPages/Warehouses.js';
 import Places from './layouts/adminPages/Places.js';
 import Products from './layouts/adminPages/Products.js';
 import Bill from './layouts/Bill.js'
+import Categories from './layouts/adminPages/Categories.js';
+import { ProtectedRoute } from './components/adminView/ProtectedRoute';
 
 
 
@@ -30,7 +32,11 @@ function App() {
             <Route path='RoleSelect' element={<RoleSelect/>}/>
             <Route path='RegisterCB' element={<Register/>}/>
             <Route path='Buyer' element={<Buyer/>}/>
-            <Route path="Admin/" element={<Admin/>}>
+            <Route path="Admin/" element={
+              <ProtectedRoute>
+                <Admin/>
+              </ProtectedRoute>
+            }>
               <Route path='Vendedores' element={<Clients/>}/>
               <Route path='Compradores' element={<Clients/>}/>
               <Route path='Beneficiarios' element={<Clients/>}/>
@@ -40,6 +46,7 @@ function App() {
               <Route path='Bodegas' element={<Warehouses/>}/>
               <Route path='Puestos' element={<Places/>}/>
               <Route path='Productos' element={<Products/>}/>
+              <Route path='Categorias' element={<Categories/>}/>
 
             </Route>
             <Route path='Bill'element={<Bill/>}/>

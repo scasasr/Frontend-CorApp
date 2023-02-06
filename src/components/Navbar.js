@@ -1,8 +1,10 @@
 import React from "react";
-import { Link} from "react-router-dom";
+import { Link,Navigate} from "react-router-dom";
 import { Nav } from 'react-bootstrap';
 
 import Icon from '@mui/material/Icon';
+import { Avatar,IconButton,Stack } from "@mui/material";
+
 
 //cookie component import
 import Cookies from "universal-cookie";
@@ -10,12 +12,29 @@ import Cookies from "universal-cookie";
 
 //images
 import logo from '../assets/logo.png';
+import { bgcolor, border } from "@mui/system";
+
+
 
 const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2) =>{
-    
+
     var cookie = new Cookies();
 
     let logged = cookie.get('logged');
+    let email = cookie.get('email');
+
+
+      function stringAvatar(email) {
+        var upper = email.toUpperCase();
+        return {
+          sx: {
+            bgcolor:"#3ab54a"
+          },
+          children: `${upper.split(' ')[0][0]}${upper.split(' ')[0][1]}`,
+        };
+      }
+
+      
 
 
    
@@ -73,25 +92,26 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
                             <div class="navbar-nav mr-auto py-0">
                                 <Link to="/" class="nav-item nav-link active">inicio</Link>
                                 <Link to="/Buyer" class="nav-item nav-link">Comprar</Link>
-                                <a href="service.html" class="nav-item nav-link">Impacto</a>
-                                <a href="project.html" class="nav-item nav-link">Contacto</a>
-                                <a href="contact.html" class="nav-item nav-link">Nosotros</a>
+                                <Link to="/Donation" class="nav-item nav-link">Donaciones</Link>
+                                <Link to="/Social" class="nav-item nav-link">Impacto</Link>
+                                <Link to="/Aboutus" class="nav-item nav-link">Nosotros</Link>
                             </div>
                             {
                                 // console.log((logged === true))
                                 (logged === "true") ? 
                                 (
                                     <>
-                                        <div className="userTest">
-                                            <div className="containerData">
-                                                <Icon> account_circle</Icon>
-                                                <div className="userdata">
-                                                    <p>{cookie.get('name')+" "+cookie.get('lastname')}</p>
-                                                    <p>{cookie.get('email')}</p>
-                                                    <p>{cookie.get('role')}</p>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    <div >
+                                        <Stack className="row mr-4" spacing={2} border={0}>
+                                            <Link as={Link} to='/Admin'>
+                                                <IconButton border={0}>
+                                                    <Avatar {...stringAvatar(email) } border={0} spacing={2} style={{  margin:'2px', width: "60px",height: "60px"}}/>
+                                                </IconButton>
+                                            </Link> 
+                                        </Stack>
+
+                                    </div>
+                                    
                                     </>
                                 ):(
                                     <>

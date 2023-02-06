@@ -13,6 +13,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import SignpostIcon from '@mui/icons-material/Signpost';
 import ThermostatAutoIcon from '@mui/icons-material/ThermostatAuto';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import StyleIcon from '@mui/icons-material/Style';
 
 const SidebarAdmin = () => {
     return(
@@ -39,6 +40,12 @@ const SidebarAdmin = () => {
                     
                     <NavLink to="Beneficiarios" exact className= "text-dark rounded py-2 w-100 d-inline-block px-3 d-flex justify-content-start" 
                     activeclassname="active"><Diversity1Icon className="mr-2"/> Beneficiarios</NavLink>
+                </li>
+
+                <li>
+                    
+                    <NavLink to="Categorias" exact className= "text-dark rounded py-2 w-100 d-inline-block px-3 d-flex justify-content-start" 
+                    activeclassname="active"><StyleIcon className="mr-2"/> Categorias</NavLink>
                 </li>
 
                 <li>

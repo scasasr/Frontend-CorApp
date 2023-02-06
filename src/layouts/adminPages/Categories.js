@@ -9,37 +9,35 @@ import { Snackbar,Alert } from "@mui/material";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import FlagIcon from '@mui/icons-material/Flag';
-import AbcIcon from '@mui/icons-material/Abc';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import HelpIcon from '@mui/icons-material/Help';
 import SaveIcon from '@mui/icons-material/Save';
+import StyleIcon from '@mui/icons-material/Style';
 
 //Conection to API
 import API from '../../services/http-common.js';
 
-const Countries = () =>{
+const Categories = () =>{
 
     const [error, setError] = useState(false);
     const [message, setMessage] = useState('');
     const [title,setTitle] = useState(''); 
     const [operation,setOperation] = useState('');
-    const [countryId,setCountryId] = useState('');
-    const [dataCountries,setDataCountries] = useState([]);
+    const [categoryId,setCategoryId] = useState('');
+    const [dataCategories,setDataCategories] = useState([]);
     const [initialValues,setInitialValues] = useState('');
-    const [countryName,setCountryName] = useState('');
-    const [countryCode,setCountryCode] = useState('');
+    const [categoryName,setCategoryName] = useState('');
+
 
     const[showModalDelete,setShowModalDelete] = useState('');
     
     const handleCloseModalDelete = () => setShowModalDelete(false);
 
-    const handleShowModalDelete = (id,name,code) => {
+    const handleShowModalDelete = (id,name) => {
         setShowModalDelete(true);
-        setCountryId(id);
-        setCountryName(name);
-        setCountryCode(code);
+        setCategoryId(id);
+        setCategoryName(name);
     }
     
 
@@ -48,23 +46,21 @@ const Countries = () =>{
 
     const handleCloseModalForm = () => setShowModalForm(false);
 
-    const handleShowModalForm =(op,id, nameCountry,codeCountry) =>{
+    const handleShowModalForm =(op,id, nameCategory) =>{
         setShowModalForm(true);
-        setCountryId(id);
+        setCategoryId(id);
 
         if(op === 1){
-            setTitle('Registrar pais');
+            setTitle('Registrar categoria');
             setOperation('Register');
             setInitialValues({
-                name:"",
-                code:""
+                name:""
             })
         }else if(op === 2){
-            setTitle('Editar pais');
+            setTitle('Editar categoria');
             setOperation('Edit');
             setInitialValues({
-                name:nameCountry,
-                code:codeCountry
+                name:nameCategory
             })
 
         }
@@ -77,9 +73,9 @@ const Countries = () =>{
     const handleCloseSendVerification = () => setShowSendVerification(false);
 
 
-    const getCountries = async () =>{
-            return await API.get('countries/all').then((response) =>{
-            setDataCountries(JSON.parse(JSON.stringify(response.data)));
+    const getCategories = async () =>{
+            return await API.get('categories/all').then((response) =>{
+            setDataCategories(JSON.parse(JSON.stringify(response.data)));
             // console.log(dataCountries);
         }).catch((error)=>{
             console.log(error);
@@ -87,22 +83,20 @@ const Countries = () =>{
     };
 
     useEffect(()=>{
-        getCountries();
+        getCategories();
     },[showSendVerification]);
 
     const formik  = useFormik({
         enableReinitialize: true,
         initialValues:initialValues,
         validationSchema:Yup.object({
-            name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios"),
-            code:Yup.string().required("Este campo es requerido").min(5,"Codigo menor a 5 digitos").max(5,"Codigo excede los 5 digitos")
+            name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios")
         }),
         onSubmit: values =>{
-            console.log('is here ')
-            const country_data =JSON.stringify(values, null, 2);
+            const categories_data =JSON.stringify(values, null, 2);
 
             if(operation === "Register"){
-                API.post('countries/add',country_data).then((response)=>{
+                API.post('categories/add',categories_data).then((response)=>{
                     if(response.status === 201){
                         formik.resetForm();
                         setShowSendVerification(true);
@@ -110,7 +104,7 @@ const Countries = () =>{
                     
                 }).catch(error =>{
                     var error_data = error.response.data["error"] ;
-                    if(error_data === "Error de servidor" || error_data === "Ya existe este país"){
+                    if(error_data === "Error de servidor" || error_data === "Ya existe esta categoria"){
                         setMessage(error_data);
                         setError(true)
                         setTimeout(() => setError(false),3000);
@@ -123,7 +117,7 @@ const Countries = () =>{
                 });
 
             }else if(operation === "Edit"){
-                API.patch('countries/'+countryId,country_data).then((response)=>{
+                API.patch('categories/'+categoryId,categories_data).then((response)=>{
                     if(response.status === 201){
                         // formik.resetForm();
                         // setSendVerification(true);
@@ -133,7 +127,7 @@ const Countries = () =>{
                     
                 }).catch(error =>{
                     var error_data = error.response.data["error"] ;
-                    if(error_data === "Error de servidor" || error_data === "No existe un país con este id"){
+                    if(error_data === "Error de servidor" || error_data === "No existe una categoria con este id"){
                         setMessage(error_data);
                         setError(true)
                         setTimeout(() => setError(false),4000);
@@ -149,8 +143,8 @@ const Countries = () =>{
         },
     });
 
-    const deleteCountry= () =>{
-        API.delete('countries/'+countryId).then((response)=>{
+    const deleteCategory= () =>{
+        API.delete('categories/'+categoryId).then((response)=>{
             if(response.status === 201){
                 // formik.resetForm();
                 // setSendVerification(true);
@@ -160,7 +154,7 @@ const Countries = () =>{
             }
         }).catch(error =>{
             var error_data = error.response.data["error"] ;
-            if(error_data === "Error de servidor" || error_data === "No existe un país con este id"){
+            if(error_data === "Error de servidor" || error_data === "No existe una categoria con este id"){
                 console.log(error_data);
                 // setMessage(error_data);
                 // setError(true)
@@ -181,7 +175,7 @@ const Countries = () =>{
     return(
         <>
             <div className="App">
-                <h1 className="pt-3">Paises</h1>
+                <h1 className="pt-3">Categorias</h1>
                     <div className="container-fluid">
                         <div className="mt-3">
                             <div className="col-md-4 offset-md-4">
@@ -201,24 +195,22 @@ const Countries = () =>{
                                         <tr>
                                             <th>id</th>
                                             <th>Nombre</th>
-                                            <th>Código</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody className="table-group-divider">
                                         {
-                                            dataCountries.map((country,id)=>(
-                                                <tr key={country._id}>
-                                                    <td>{country._id}</td>
-                                                    <td>{country.name}</td>
-                                                    <td>{country.code}</td>
+                                            dataCategories.map((category,id)=>(
+                                                <tr key={category._id}>
+                                                    <td>{category._id}</td>
+                                                    <td>{category.name}</td>
                                                     <td>   
-                                                        <button onClick={()=> handleShowModalForm(2,country._id,country.name,country.code)} 
+                                                        <button onClick={()=> handleShowModalForm(2,category._id,category.name)} 
                                                         className="btn btn-warning">
                                                             <i><EditIcon/></i>
                                                         </button>
                                                         &nbsp;
-                                                        <button onClick={() => handleShowModalDelete(country._id,country.name,country.code)} className="btn btn-danger">
+                                                        <button onClick={() => handleShowModalDelete(category._id,category.name)} className="btn btn-danger">
                                                             <i><DeleteIcon/></i>
                                                         </button>  
                                                     </td>
@@ -236,34 +228,20 @@ const Countries = () =>{
                     <ModalBody>
                         <form className="form mt-0" onSubmit={formik.handleSubmit}>
                             <div className="input-group mb-3">
-                                <span className="input-group-text"><FlagIcon/></span>
+                                <span className="input-group-text"><StyleIcon/></span>
                                 <input 
                                     className="form-control"
                                     type="text" 
                                     id="name" 
                                     name= "name"
-                                    placeholder="Nombre del país"
+                                    placeholder="Nombre de la categoria"
                                     onChange={formik.handleChange} 
                                     onBlur={formik.handleBlur}
                                     value={formik.values.name} 
                                 />
                             </div >
                             {formik.touched.name && formik.errors.name ? <div className="error">{formik.errors.name}</div> : null}
-                        
-                            <div className="input-group mb-3">
-                            <span className="input-group-text"><AbcIcon/></span>
-                                <input 
-                                    className="form-control"
-                                    type="text" 
-                                    id="code" 
-                                    name= "code" 
-                                    placeholder="Código"
-                                    onChange={formik.handleChange}
-                                    
-                                    value={formik.values.code} 
-                                />
-                            </div>
-                            {formik.touched.code && formik.errors.code ? <div className="error">{formik.errors.code}</div> : null}
+                
                         
                             <div> 
                                 <button className="btn btn-success" type="submit"><SaveIcon className="mr-1"/>Guardar</button>
@@ -287,11 +265,12 @@ const Countries = () =>{
                     <ModalBody>
                         <div className="Container">
                             <h5 className="mb-3">¿Está seguro que desea eliminar este pais con</h5>
-                            <h5>Nombre: {countryName}</h5>
-                            <h5 className="mb-2">Código: {countryCode}</h5>
+                            <h5 className="mb-2">Id: {categoryId}</h5>
+                            <h5>Nombre: {categoryName}</h5>
+                            
                         </div>
                         <div className="d-flex justify-content-around mt-3">
-                            <button onClick={deleteCountry} className="btn btn-success"><CheckIcon/>SI</button>
+                            <button onClick={deleteCategory} className="btn btn-success"><CheckIcon/>SI</button>
                             <button onClick={handleCloseModalDelete} className="btn btn-danger"><CloseIcon/>NO</button>
                         </div>
 
@@ -303,4 +282,4 @@ const Countries = () =>{
 
 };
 
-export default Countries;
+export default Categories;

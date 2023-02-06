@@ -3,6 +3,7 @@ import '../style.css';
 
 import { Link} from "react-router-dom";
 import { Nav,Modal } from 'react-bootstrap';
+import Navbar_all from "../components/Navbar.js";
 
 //images
 import logo from '../assets/logo.png';
@@ -26,8 +27,13 @@ const Main = () =>{
 
     return(
         <>
+
         {/*NAVBAR START*/}
-        <div class="container-fluid">
+        {Navbar_all("lock_person","how_to_reg","/login","RegisterCB","Entrar","Registrarse")}
+        {/*NAVBAR END*/}
+
+        {/*NAVBAR START*/}
+        {/* <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-3 bg-secondary d-none d-lg-block"> 
                     <a href="" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
@@ -98,7 +104,7 @@ const Main = () =>{
                     </nav>
                 </div>
             </div>
-        </div>
+        </div> */}
         {/*NAVBAR END*/}
 
         {/*CARRUSEL START*/}
