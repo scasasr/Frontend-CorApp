@@ -10,11 +10,11 @@ export const ProtectedRoute =({children}) =>{
     let logged = cookie.get('logged');
     let role = cookie.get('role')
 
-    if(logged === "false"){
+    if(!logged){
         return <Navigate to='/login'/>
     }
 
-    if(role !== "admin"){
+    if(logged && role !== "admin"){
         return <Navigate to='/'/>
     }
 

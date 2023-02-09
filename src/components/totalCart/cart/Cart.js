@@ -96,7 +96,6 @@ const Cart = () =>{
                       {(logged==="true") ?
                       (<>
                         <Link as={Link} to='/Bill'>
-                          {console.log('hello')}
                           <div>
                             <button className={style.btn_pay}>Pagar
                             </button>
