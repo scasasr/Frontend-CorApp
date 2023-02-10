@@ -29,7 +29,7 @@ const Main = () =>{
         <>
 
         {/*NAVBAR START*/}
-        {Navbar_all("lock_person","how_to_reg","/login","RegisterCB","Entrar","Registrarse")}
+        {Navbar_all("lock_person","how_to_reg","/login","RoleSelect","Entrar","Registrarse")}
         {/*NAVBAR END*/}
 
         {/*NAVBAR START*/}
@@ -108,7 +108,7 @@ const Main = () =>{
         {/*NAVBAR END*/}
 
         {/*CARRUSEL START*/}
-        <div class="container-fluid p-0">
+        <div class="container-fluid_ p-0">
             <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
                 {/* <ol class="carousel-indicators">
                     <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
@@ -120,10 +120,10 @@ const Main = () =>{
                         <img class="img-fluid" src={carrusel_img1} alt="Image"/>
                         <div class="carousel-caption d-flex align-items-center justify-content-start">
                             <div class="p-5" style={{width: "100%", maxWidth:"900px"}}>
-                                <h3 class="text-primary text-uppercase mb-md-3">CORAPPBASTOS</h3>
-                                <h2 class="text-white mb-md-4">La app diseñada para facilitar</h2>
-                                <h2 class="text-white mb-md-4">el comercio y las donaciones </h2>
-                                <h2 class="text-white mb-md-4">de alimentos perecederos.</h2>
+                                <h4 class="text-primary text-uppercase mb-md-3">CORAPPBASTOS</h4>
+                                <h3 class="text-white mb-md-4">La app diseñada para facilitar</h3>
+                                <h3 class="text-white mb-md-4">el comercio y las donaciones </h3>
+                                <h3 class="text-white mb-md-4">de alimentos perecederos.</h3>
                                 <Nav.Link as={Link} to="/login">
                                     <div href="" class="btn btn-primary">Iniciar ahora</div>
                                 </Nav.Link>
@@ -146,140 +146,142 @@ const Main = () =>{
         </div>
         {/*CARRUSEL END*/}
 
-        <div class="container-fluid py-5 style-background" >
-            <div class="container py-5">
-                <div class="row">
-                    <div class="col-lg-7 pt-lg-5 pb-3">
-                        <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">Por qué elegirnos</h6>
-                        <h1 class="mb-4 section-title">25 Years Experience In Cleaning Industry</h1>
-                        <p class="mb-4">Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <h1 class="text-secondary mb-2" data-toggle="counter-up">225</h1>
-                                <h6 class="font-weight-semi-bold mb-sm-4">Our Cleaners</h6>
-                            </div>
-                            <div class="col-sm-4">
-                                <h1 class="text-secondary mb-2" data-toggle="counter-up">1050</h1>
-                                <h6 class="font-weight-semi-bold mb-sm-4">Happy Clients</h6>
-                            </div>
-                            <div class="col-sm-4">
-                                <h1 class="text-secondary mb-2" data-toggle="counter-up">2500</h1>
-                                <h6 class="font-weight-semi-bold mb-sm-4">Projects Done</h6>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-5" style={{minHeight:"500px"}}>
-                        <div class="position-relative h-100 rounded overflow-hidden ml-3">
-                            <img class="position-relative w-100 h-100 " src={feature1} style={{objectFit:"cover"}}/> 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        
-        <div class="container-fluid py-5 mb-5 ">
-            <div class="containercd-flex justify-content-around">
-                <div class="row ">
-                    <div class="col-lg-5 ml-0">
-                        <div class=" ml-0 d-flex flex-column align-items-center justify-content-center bg-about rounded h-100 py-5 px-3">
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/MnQHZ50zbRA?&autoplay=1" 
-                            title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; 
-                            encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-                        </div>
-                    </div>
-                    <div class="col-lg-7 pt-5 pb-lg-5 d-flex align-items-center">
-                        <div>
-                            <h5 class="text-secondary font-weight-semi-bold text-uppercase mb-3 d-flex justify-content-start">CORAPPBASTOS</h5>
-                            <h1 class="mb-4 section-title d-flex justify-content-start">GANADORES TITANES CARACOL</h1>
-                            <h5 class="text-muted font-weight-normal mb-3 text-left">Gracias al apoyo de la gente, somos ganadores de Titanes caracol 2022 - Categoria de Tecnologia e Innovación</h5>
-                            <Nav.Link as={Link} to="/login">
-                                <div class="d-flex align-items-center pt-4">
-                                    <div href="" class="btn btn-primary mr-5">Comenzar</div>
+        <div>
+            <div class="container-fluid_ py-5 style-background" >
+                <div class="container py-5">
+                    <div class="row">
+                        <div class="col-lg-7 pt-lg-5 pb-3">
+                            <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">¿Por qué elegirnos?</h6>
+                            <h1 class="mb-4 section-title"></h1>
+                            <p class="mb-4">Somos la primera plataforma a nivel mundial que permite la comercialización y donacion de alimentos en las centrales de abasto.</p>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h1 class="text-secondary mb-2" data-toggle="counter-up">1500</h1>
+                                    <h6 class="font-weight-semi-bold mb-sm-4">Beneficiarios</h6>
                                 </div>
-                            </Nav.Link>
+                                <div class="col-sm-4">
+                                    <h1 class="text-secondary mb-2" data-toggle="counter-up">400</h1>
+                                    <h6 class="font-weight-semi-bold mb-sm-4">Vendedores</h6>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h1 class="text-secondary mb-2" data-toggle="counter-up">1600</h1>
+                                    <h6 class="font-weight-semi-bold mb-sm-4">Compradores</h6>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        {/* FOOTER START */}
-        <div class="container-fluid bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
-            <div class="row pt-5">
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <a href="index.html" class="navbar-brand">
-                        <h1 class="m-0 mt-n3 display-4 text-primary">CorApp</h1>
-                    </a>
-                    <p>La app diseñada para facilitar el comercio y las donaciones de alimentos perecederos.</p>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h4 class="font-weight-semi-bold text-primary mb-4">Get In Touch</h4>
-                    <p><i class="fa fa-map-marker-alt text-primary mr-2"></i>123 Street, New York, USA</p>
-                    <p><i class="fa fa-phone-alt text-primary mr-2"></i>+57 316 380 6190</p>
-                    <p><i class="fa fa-envelope text-primary mr-2"></i>contactenos@corappbastos.com</p>
-                    <div class="d-flex justify-content-start mt-4">
-                        <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a class="btn btn-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h4 class="font-weight-semi-bold text-primary mb-4">Acceso rapido</h4>
-                    <div class="d-flex flex-column justify-content-start">
-                        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
-                        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Comprar</a>
-                        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Donaciones</a>
-                        <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Impacto</a>
-                        <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contactenos</a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-5">
-                    <h4 class="font-weight-semi-bold text-primary mb-4">Newsletter</h4>
-                    <p>Rebum labore lorem dolores kasd est, et ipsum amet et at kasd, ipsum sea tempor magna tempor. Accu kasd sed ea duo ipsum.</p>
-                    <div class="w-100">
-                        <div class="input-group">
-                            <input type="text" class="form-control border-0" style={{padding:"25px"}} placeholder="Your Email"/>
-                            <div class="input-group-append">
-                                <button class="btn btn-primary px-4">Sign Up</button>
+                        <div class="col-lg-5" style={{minHeight:"500px"}}>
+                            <div class="position-relative h-100 rounded overflow-hidden ml-3">
+                                <img class="position-relative w-100 h-100 " src={feature1} style={{objectFit:"cover"}}/> 
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-    </div>
-    <div class="container-fluid bg-dark text-white border-top py-4 px-sm-3 px-md-5" style={{borderColor:"#3E3E4E !important"}}>
-        <div class="row">
-            <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
-                <p class="m-0 text-white">&copy; <a href="#">CorApp</a>. Desarrollado por <a href="/">TayronaSolutions</a>
-                </p>
+
+
+            
+            <div class="container-fluid_ py-5 mb-5 ">
+                <div class="containercd-flex justify-content-around">
+                    <div class="row ">
+                        <div class="col-lg-5 ml-0">
+                            <div class=" ml-0 d-flex flex-column align-items-center justify-content-center bg-about rounded h-100 py-5 px-3">
+                                <iframe width="560" height="315" src="https://www.youtube.com/embed/MnQHZ50zbRA?&autoplay=1" 
+                                title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; 
+                                encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
+                            </div>
+                        </div>
+                        <div class="col-lg-7 pt-5 pb-lg-5 d-flex align-items-center">
+                            <div>
+                                <h5 class="text-secondary font-weight-semi-bold text-uppercase mb-3 d-flex justify-content-start">CORAPPBASTOS</h5>
+                                <h1 class="mb-4 section-title d-flex justify-content-start">GANADORES TITANES CARACOL</h1>
+                                <h5 class="text-muted font-weight-normal mb-3 text-left">Gracias al apoyo de la gente, somos ganadores de Titanes caracol 2022 - Categoria de Tecnologia e Innovación</h5>
+                                <Nav.Link as={Link} to="/login">
+                                    <div class="d-flex align-items-center pt-4">
+                                        <div href="" class="btn btn-primary mr-5">Comenzar</div>
+                                    </div>
+                                </Nav.Link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6 text-center text-md-right">
-                <ul class="nav d-inline-flex">
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Privacy</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Terms</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">FAQs</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white py-0" href="#">Help</a>
-                    </li>
-                </ul>
+            
+            {/* FOOTER START */}
+            <div class="container-fluid_ bg-dark text-white mt-5 py-5 px-sm-3 px-md-5">
+                <div class="row pt-5">
+                    <div class="col-lg-3 col-md-6 mb-5">
+                        <a href="index.html" class="navbar-brand">
+                            <h1 class="m-0 mt-n3 display-4 text-primary">CorApp</h1>
+                        </a>
+                        <p>La app diseñada para facilitar el comercio y las donaciones de alimentos perecederos.</p>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5">
+                        <h4 class="font-weight-semi-bold text-primary mb-4">Get In Touch</h4>
+                        <p><i class="fa fa-map-marker-alt text-primary mr-2"></i>123 Street, New York, USA</p>
+                        <p><i class="fa fa-phone-alt text-primary mr-2"></i>+57 316 380 6190</p>
+                        <p><i class="fa fa-envelope text-primary mr-2"></i>contactenos@corappbastos.com</p>
+                        <div class="d-flex justify-content-start mt-4">
+                            <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-light btn-social mr-2" href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a class="btn btn-light btn-social" href="#"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5">
+                        <h4 class="font-weight-semi-bold text-primary mb-4">Acceso rapido</h4>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Inicio</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Comprar</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Donaciones</a>
+                            <a class="text-white mb-2" href="#"><i class="fa fa-angle-right mr-2"></i>Impacto</a>
+                            <a class="text-white" href="#"><i class="fa fa-angle-right mr-2"></i>Contactenos</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-5">
+                        <h4 class="font-weight-semi-bold text-primary mb-4">Newsletter</h4>
+                        <p>Rebum labore lorem dolores kasd est, et ipsum amet et at kasd, ipsum sea tempor magna tempor. Accu kasd sed ea duo ipsum.</p>
+                        <div class="w-100">
+                            <div class="input-group">
+                                <input type="text" class="form-control border-0" style={{padding:"25px"}} placeholder="Your Email"/>
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary px-4">Sign Up</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="container-fluid_ bg-dark text-white border-top py-4 px-sm-3 px-md-5" style={{borderColor:"#3E3E4E !important"}}>
+            <div class="row">
+                <div class="col-lg-6 text-center text-md-left mb-3 mb-md-0">
+                    <p class="m-0 text-white">&copy; <a href="#">CorApp</a>. Desarrollado por <a href="/">TayronaSolutions</a>
+                    </p>
+                </div>
+                <div class="col-lg-6 text-center text-md-right">
+                    <ul class="nav d-inline-flex">
+                        <li class="nav-item">
+                            <a class="nav-link text-white py-0" href="#">Privacy</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white py-0" href="#">Terms</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white py-0" href="#">FAQs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white py-0" href="#">Help</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
-    {/*FOOTER END*/}
+        {/*FOOTER END*/}
 
 
-    {/* BACK TO */}
-    <a href="#" class="btn btn-primary px-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
-
+        {/* BACK TO */}
+        <a href="#" class="btn btn-primary px-3 back-to-top"><i class="fa fa-angle-double-up"></i></a>
+  
+        </div>
         </>
     )
 
