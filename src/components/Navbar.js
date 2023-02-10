@@ -1,4 +1,4 @@
-import React, {useState}from "react";
+import React, {useState,useEffect}from "react";
 import { Link,useNavigate} from "react-router-dom";
 import { Nav } from 'react-bootstrap';
 import '../style.css';
@@ -32,28 +32,57 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-
+import NotificationsIcon from '@mui/icons-material/Notifications';
 
 
 const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2) =>{
 
+    const [logged,setLogged] = useState('');
+    const [email,setEmail] = useState('');
+    const [role,setRole] = useState('');
+    const [name,setName] = useState('');
+
     var cookie = new Cookies();
     const navigate = useNavigate();
+    
+    function logOut(){
+        console.log('is here')
+        cookie.remove('user_id',{path:"/"});
+        cookie.remove('name', {path:"/"});
+        cookie.remove('lastname',{path:"/"});
+        cookie.remove('email',{path:"/"});
+        cookie.remove('role',{path:"/"});
+        cookie.remove("logged",{ path: '/' });
 
-    let logged = cookie.get('logged');
-    let email = cookie.get('email') || "";
-    let role = cookie.get('role');
-    let name = cookie.get('name');
+        window.location.href = "./";
+
+        setLogged('');
+        setEmail('');
+        setRole('');
+        setName(''); 
+
+        
+
+    }
+
+
+    useEffect(() => {
+        setLogged(cookie.get('logged'));
+        setEmail(cookie.get('email') || "");
+        setRole(cookie.get('role'));
+        setName(cookie.get('name'));   
+    }, []);
+
 
     //Avatar view
     function stringAvatar(email) {
-    var upper = email.toUpperCase();
-    return {
-        sx: {
-        bgcolor:"#3ab54a"
-        },
-        children: `${upper.split(' ')[0][0]}${upper.split(' ')[0][1]}`,
-    };
+        var upper = email.toUpperCase();
+        return {
+            sx: {
+            bgcolor:"#3ab54a"
+            },
+            children: `${upper.split(' ')[0][0]}${upper.split(' ')[0][1]}`,
+        };
     }
 
     //Drawer view
@@ -97,6 +126,14 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
                     </ListItemIcon>
                     </ListItemButton>
                     </ListItem>
+
+                    <ListItem key={'seller_notification'} disablePadding>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <NotificationsIcon className="mr-2"/>Notificaciones
+                    </ListItemIcon>
+                    </ListItemButton>
+                    </ListItem>
                 </List> 
                      
             )
@@ -126,6 +163,15 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
                     </ListItemIcon>
                     </ListItemButton>
                     </ListItem>
+
+                    <ListItem key={'buyer_notification'} disablePadding>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <NotificationsIcon className="mr-2"/>Notificaciones
+                    </ListItemIcon>
+                    </ListItemButton>
+                    </ListItem>
+
                 </List>
             )
         }else if(name_role === "admin"){
@@ -140,13 +186,22 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
                         </ListItemButton>
                     </ListItem>
                     </Link>
+
+                    <ListItem key={'admin_notification'} disablePadding>
+                    <ListItemButton>
+                    <ListItemIcon>
+                        <NotificationsIcon className="mr-2"/>Notificaciones
+                    </ListItemIcon>
+                    </ListItemButton>
+                    </ListItem>
+
                 </List>
+
             )
         }else{
             return(<></>)
         }
-                
-                
+                        
                
         }
 
@@ -207,7 +262,7 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
                         </button>
                         <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                             <div class="navbar-nav mr-auto py-0">
-                                <Link to="/" class="nav-item nav-link active">inicio</Link>
+                                <Link to="/" class="nav-item nav-link" >inicio</Link>
                                 <Link to="/Buyer" class="nav-item nav-link">Comprar</Link>
                                 <Link to="/Donation" class="nav-item nav-link">Donaciones</Link>
                                 <Link to="/Social" class="nav-item nav-link">Impacto</Link>
@@ -284,14 +339,18 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
                     </ListItemIcon>
                     </ListItemButton>
                     </ListItem>
-
-                    <ListItem className="LogOut"  key={'LogOut'} disablePadding>
+                    
+                    
+                    <ListItem className="LogOut"  key={'LogOut'} onClick={logOut} disablePadding>
                     <ListItemButton>
                     <ListItemIcon>
                         <ExitToAppIcon  className="mr-2"/> Cerrar sesión
                     </ListItemIcon>
                     </ListItemButton>
                     </ListItem>
+                
+                    
+                    
                 </List>
             </SwipeableDrawer>
         {/* DRAWER END */}

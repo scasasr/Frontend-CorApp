@@ -286,7 +286,7 @@ const Clients = (role) => {
         <>
         <div className="App">
             <h1 className="pt-3">Clientes :  {role.role}</h1>
-                <div className="container-fluid">
+                <div className="container-fluid_">
                     <div className="mt-3">
                         <div className="col-md-4 offset-md-4">
                             <div className="d-grid mx-auto">

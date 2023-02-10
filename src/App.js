@@ -19,6 +19,7 @@ import Bill from './layouts/Bill.js'
 import Categories from './layouts/adminPages/Categories.js';
 import Udm from './layouts/adminPages/Udm.js';
 import Qualities from './layouts/adminPages/Qualities.js';
+import Beneficiary from './layouts/Beneficiary.js';
 import { ProtectedRoute } from './components/adminView/ProtectedRoute';
 
 
@@ -54,6 +55,7 @@ function App() {
 
             </Route>
             <Route path='Bill'element={<Bill/>}/>
+            <Route path='Donation'element={<Beneficiary/>}/>
             
         </Routes>
       </BrowserRouter>
