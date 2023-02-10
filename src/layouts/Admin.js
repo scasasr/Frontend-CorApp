@@ -18,6 +18,8 @@ import Warehouses from "./adminPages/Warehouses.js";
 import Places from "./adminPages/Places.js";
 import Products from "./adminPages/Products.js";
 import Categories from "./adminPages/Categories.js";
+import Udm from "./adminPages/Udm.js";
+import Qualities from "./adminPages/Qualities.js";
 
 import Navbar_all from "../components/Navbar.js";
 
@@ -41,6 +43,8 @@ const Admin = () => {
                 <Route path='Puestos' exact={true} element={<Places/>}/>
                 <Route path='Productos' exact={true} element={<Products/>}/>
                 <Route path='Categorias' exact={true} element={<Categories/>}/>
+                <Route path='Udm' exact={true} element={<Udm/>}/>
+                <Route path='Calidades' exact={true} element={<Qualities/>}/>
                 </Routes>
     
             </div>

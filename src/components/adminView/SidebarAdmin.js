@@ -86,13 +86,13 @@ const SidebarAdmin = () => {
 
                 <li>
                     
-                    <NavLink to="/" exact className= "text-dark rounded py-2 w-100 d-inline-block px-3 d-flex justify-content-start" 
+                    <NavLink to="Udm" exact className= "text-dark rounded py-2 w-100 d-inline-block px-3 d-flex justify-content-start" 
                     activeclassname="active"><ThermostatAutoIcon className="mr-2"/>U.Medidas</NavLink>
                 </li>
 
                 <li>
                     
-                    <NavLink to="/" exact className= "text-dark rounded py-2 w-100 d-inline-block px-3 d-flex justify-content-start" 
+                    <NavLink to="Calidades" exact className= "text-dark rounded py-2 w-100 d-inline-block px-3 d-flex justify-content-start" 
                     activeclassname="active"><VolunteerActivismIcon className="mr-2"/>Calidades</NavLink>
                 </li>
 

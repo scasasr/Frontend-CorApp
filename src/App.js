@@ -17,9 +17,10 @@ import Places from './layouts/adminPages/Places.js';
 import Products from './layouts/adminPages/Products.js';
 import Bill from './layouts/Bill.js'
 import Categories from './layouts/adminPages/Categories.js';
+import Udm from './layouts/adminPages/Udm.js';
+import Qualities from './layouts/adminPages/Qualities.js';
+import Beneficiary from './layouts/Beneficiary.js';
 import { ProtectedRoute } from './components/adminView/ProtectedRoute';
-
-
 
 
 function App() {
@@ -30,7 +31,9 @@ function App() {
             <Route path='/' element={<Main/>}/>
             <Route path='login' element={<Login/>}/>
             <Route path='RoleSelect' element={<RoleSelect/>}/>
-            <Route path='RegisterCB' element={<Register/>}/>
+            <Route path='RegisterC' element={<Register role_name="comprador"/>}/>
+            <Route path='RegisterB' element={<Register role_name="beneficiario"/>}/>
+            <Route path='RegisterV' element={<Register role_name="vendedor"/>}/>
             <Route path='Buyer' element={<Buyer/>}/>
             <Route path="Admin/" element={
               <ProtectedRoute>
@@ -47,9 +50,12 @@ function App() {
               <Route path='Puestos' element={<Places/>}/>
               <Route path='Productos' element={<Products/>}/>
               <Route path='Categorias' element={<Categories/>}/>
+              <Route path='Udm' element={<Udm/>}/>
+              <Route path='Calidades' element={<Qualities/>}/>
 
             </Route>
             <Route path='Bill'element={<Bill/>}/>
+            <Route path='Donation'element={<Beneficiary/>}/>
             
         </Routes>
       </BrowserRouter>

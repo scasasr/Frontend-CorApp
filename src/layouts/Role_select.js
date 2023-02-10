@@ -17,6 +17,7 @@ import logo from '../assets/logo.png';
 // import LockPersonIcon from '@mui/icons-material/LockPerson';
 import Diversity1Icon from '@mui/icons-material/Diversity1';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import SellIcon from '@mui/icons-material/Sell';
 
 
 const RoleSelect = () =>{
@@ -108,12 +109,21 @@ const RoleSelect = () =>{
         <div class="style-background register_cont">
             <h1 class="pt-4">Por favor seleccione un tipo de cuenta para continuar</h1>
             <p class="mt-3 pt-4">Debe seleccionar un rol para poder registrarse</p>
-            <div class="register-mt d-flex justify-content-around pt-2">
+            <div class="register-mt pt-2 ">
                 <Paper elevation={3}>
                     <div class="paper-p-6 mt-3">
                         <ShoppingBasketIcon style={fontStyles} />
                         <h3 >Comprador</h3>
-                        < Link to="/RegisterCB" class="btn btn-secondary mr-3 d-none d-lg-block" onClick={cookie.set('role',"comprador",{path:"/"})}>
+                        < Link to="/RegisterC" class="btn btn-secondary mr-3 d-none d-lg-block" onClick={cookie.set('role',"comprador",{path:"/"})}>
+                            Seleccionar    
+                        </Link>
+                    </div>
+                </Paper>
+                <Paper elevation={3}>
+                    <div class="paper-p-6 mt-3">
+                        <SellIcon style={fontStyles} />
+                        <h3 >Vendedor</h3>
+                        < Link to="/RegisterV" class="btn btn-secondary mr-3 d-none d-lg-block" onClick={cookie.set('role',"vendedor",{path:"/"})}>
                             Seleccionar    
                         </Link>
                     </div>
@@ -122,7 +132,7 @@ const RoleSelect = () =>{
                     <div class="paper-p-6 mt-3">
                         <Diversity1Icon style={fontStyles} />
                         <h3 >Beneficiario</h3>
-                        < Link to="/RegisterCB" class="btn btn-secondary mr-3 d-none d-lg-block" onClick={cookie.set('role',"beneficiario",{path:"/"})}>
+                        < Link to="/RegisterB" class="btn btn-secondary mr-3 d-none d-lg-block" onClick={cookie.set('role',"beneficiario",{path:"/"})}>
                             Seleccionar    
                         </Link>
                     </div>

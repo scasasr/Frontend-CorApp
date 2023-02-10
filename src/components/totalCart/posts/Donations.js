@@ -1,20 +1,18 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useState , useEffect} from "react";
 import style from'./style.module.scss';
 import { Button, Modal } from 'react-bootstrap';
 
 import API from '../../../services/http-common.js'
-import { cartContext } from "../context/CartContext.js";
 import {  Divider } from "@mui/material";
 import GoogleMap  from "simple-react-google-maps";
 
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import DescriptionIcon from '@mui/icons-material/Description';
 import MyLocationIcon from '@mui/icons-material/MyLocation';
-import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 
-const Posts = () =>{
+const Donations= () =>{
 
     const [postId,setPostId] = useState('');
     const [postPhoto,setPostPhoto] = useState('');
@@ -30,16 +28,12 @@ const Posts = () =>{
     const [latitude,setLatitude] = useState('');
     const [longitude,setLongitude] = useState('');
     const [partnerName,setPartnerName] = useState('');
-
-    const [post,setPost] = useState(Object);
-
     
     const[showModalSpecificationPost,setShowModalSpecificationPost]= useState(false);
     const[postsData,setPostsData] = useState([]);
 
 
-    const handleOpenModalSpecificationPost = (post_id, post) =>{
-        setPost(post);
+    const handleOpenModalSpecificationPost = (post_id) =>{
         setShowModalSpecificationPost(true);
         setPostId(post_id);
         
@@ -48,7 +42,7 @@ const Posts = () =>{
 
     
     const getPosts =async () =>{
-        return await API.get('/posts/all/availables').then((response)=>{
+        return await API.get('/posts/all/donations').then((response)=>{
             setPostsData(JSON.parse(JSON.stringify(response.data)));
             console.log(postsData);
         }).catch((error)=>{
@@ -90,7 +84,7 @@ const Posts = () =>{
         getExtendPost();
     }, [showModalSpecificationPost]);
     
-    const{addItemToCart}= useContext(cartContext)
+
      
     return(<>
         <div class={style.productsContainer}>
@@ -101,8 +95,7 @@ const Posts = () =>{
                     <div>
                         <p>{post.description} - ${post.price.$numberDecimal}</p>
                     </div>
-                    <button onClick={() => addItemToCart(post)}>Agregar</button>
-                    <a onClick={() => handleOpenModalSpecificationPost(post._id,post)}>Ver detalles</a>
+                    <a onClick={() => handleOpenModalSpecificationPost(post._id)}>Ver detalles</a>
                     </>
                 </div> 
                 
@@ -187,11 +180,10 @@ const Posts = () =>{
                 </div>
                 <Modal.Footer>
                     <Button  className="btn btn-danger" onClick={() => setShowModalSpecificationPost(false)}><CloseIcon/>Cerrar</Button>
-                    <Button  className="btn btn-success" onClick={() => addItemToCart(post)}><AddIcon/>Agregar</Button>
                 </Modal.Footer>
             </Modal> 
         </div>
     </>);
 };
 
-export default Posts;
+export default Donations;

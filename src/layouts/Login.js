@@ -4,16 +4,10 @@ import { Link,useNavigate} from "react-router-dom";
 import { Nav,Modal } from 'react-bootstrap';
 import PasswordRecovery from '../components/Password_recovery.js';
 import { Container,Snackbar,Alert } from "@mui/material";
+import Navbar_all from "../components/Navbar.js";
 
 //Conecction to API-rest
 import API from '../services/http-common.js'
-
-//images
-import logo from '../assets/logo.png';
-
-// mui material icons
-import HowToRegIcon from '@mui/icons-material/HowToReg';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 //form validation
 import { useFormik} from "formik";
@@ -38,10 +32,10 @@ const Login = () =>{
     const handleShowModalPasswordRecovery = () => setShowModalPasswordRecovery(true);
 
     //Show login verification
-    // const [showLoginVerification, setShowLoginVerification] = useState(false);
+    const [showLoginVerification, setShowLoginVerification] = useState(false);
 
-    // const handleCloseLoginVerification = () => setShowLoginVerification(false);
-    // const handleShowLoginVerification = () => setShowLoginVerification(true);
+    const handleCloseLoginVerification = () => setShowLoginVerification(false);
+   
 
     //cookie
     var cookie = new Cookies();
@@ -66,18 +60,22 @@ const Login = () =>{
             API.post('partners/login',partner_data).then((response)=>{
                 if(response.status === 201){
                     formik.resetForm();
+                    console.log(response.data)
+                    const role  = response.data["role_name"];
+                    console.log(role)
+                    
                     cookie.set('user_id',response.data["partner"]["_id"],{path:"/"});
                     cookie.set('name',response.data["partner"]["name"], {path:"/"});
                     cookie.set('lastname',response.data["partner"]["last_name"], {path:"/"});
                     cookie.set('email',response.data["partner"]["email"],{path:"/"});
-                    cookie.set('role',response.data["role_name"],{path:"/"});
+                    cookie.set('role',role,{path:"/"});
                     cookie.set("logged", true, { path: '/' });
 
-                    const role  = cookie.get('role');
                     if(role === "comprador")window.location.href = "./Buyer";
                     if(role === "beneficiario")window.location.href = "./Beneficiary";
                     if(role === "vendedor")window.location.href = "./Seller";
-                    if(role === "administrador")window.location.href = "./Admin";
+                    if(role === "admin")window.location.href = "./Admin";
+                    showLoginVerification = setShowLoginVerification(true)
                     
                 }
                 
@@ -102,84 +100,13 @@ const Login = () =>{
     return(
         <>
         {/*NAVBAR START*/}
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 bg-secondary d-none d-lg-block"> 
-                    <a href='/' class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                        <img  width="90" height="90" src={logo} alt="React Bootstrap logo"/> 
-                        <h1 class="m-2 display-3 text-primary d-inline-block align-top">CorApp</h1>
-                    </a>
-                </div>
-                <div class="col-lg-9">
-                    <div class="row bg-dark d-none d-lg-flex">
-                        <div class="col-lg-7 text-left text-white">
-                            <div class="h-100 d-inline-flex align-items-center border-right border-primary py-2 px-3">
-                                <i class="fa fa-envelope text-primary mr-2"></i>
-                                <small>contactenos@corappbastos.com</small>
-                            </div>
-                            <div class="h-100 d-inline-flex align-items-center py-2 px-2">
-                                <i class="fa fa-phone-alt text-primary mr-2"></i>
-                                <small>+57 316 380 6190</small>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 text-right">
-                            <div class="d-inline-flex align-items-center pr-2">
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
-                        <a href="" class="navbar-brand d-block d-lg-none">
-                            <h1 class="m-0 display-4 text-primary">CorApp</h1>
-                        </a>
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto py-0">
-                                <Link to="/" class="nav-item nav-link active">inicio</Link>
-                                <a href="about.html" class="nav-item nav-link">Actores</a>
-                                <a href="service.html" class="nav-item nav-link">Impacto</a>
-                                <a href="project.html" class="nav-item nav-link">Contacto</a>
-                                <a href="contact.html" class="nav-item nav-link">Nosotros</a>
-                            </div>
-                            <Nav.Link as={Link} to="/">
-                                < div class="btn btn-primary mr-3 d-none d-lg-block ">
-                                    <ArrowBackIcon/>
-                                    Volver
-                                </div>
-                            </Nav.Link>
-                            <Nav.Link as={Link} to="/RegisterCB">
-                                < div class="btn btn-secondary mr-3 d-none d-lg-block ">
-                                    <HowToRegIcon/>
-                                    Registrarse 
-                                </div>
-                            </Nav.Link>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div>
+        {Navbar_all("arrow_back","how_to_reg","/","/RoleSelect","Volver","Registrarse")}
         {/*NAVBAR END*/}
 
         {/*FORM LOGIN START*/}
         <div class="style-background register_cont" >
             <h1 class="mt-2">Iniciar sesión</h1>
-            <Container class ="register-mt" >
+            <Container class ="login-mt" >
                 
                 <form className="form_style" onSubmit={formik.handleSubmit}>
                     <div>
@@ -213,7 +140,7 @@ const Login = () =>{
 
                     {error && <p className="error">{message}</p>}
 
-                    <Nav.Link as={Link} to="/RegisterCB">
+                    <Nav.Link as={Link} to="/RoleSelect">
                         <small>¿No estas registrado?</small>
                     </Nav.Link>
                     <Nav.Link onClick={handleShowModalPasswordRecovery}>
@@ -239,11 +166,11 @@ const Login = () =>{
 
 
         {/* LOGIN CONFIRMATION */}
-        {/* <Snackbar open={showLoginVerification} autoHideDuration={6000} onClose={handleCloseLoginVerification }>
+        <Snackbar open={showLoginVerification} autoHideDuration={6000} onClose={handleCloseLoginVerification }>
             <Alert onClose={handleCloseLoginVerification } severity="success" sx={{ width: '100%' }}>
                 This is a success message!
             </Alert>
-        </Snackbar> */}
+        </Snackbar>
 
         </>
        

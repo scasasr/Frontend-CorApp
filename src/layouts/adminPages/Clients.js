@@ -71,12 +71,12 @@ const Clients = (role) => {
                     role_name:roleName,
                     document_type:'',
                     account_number:''
-                })
+                })  
 
                 setYupSchema(Yup.object({
                     name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios"),
                     last_name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios"),
-                    document_number:Yup.string().required("Este campo es requerido").min(7,"número invalido: menos de 6 digitos").max(10,"número invalido: más de 10 digitos"),
+                    document_number:Yup.string().required("Este campo es requerido").matches(/^((\d{8})|(\d{10})|(\d{11})|(\d{6}-\d{5}))?$/,"Numero de cedula no valido"),
                     email:Yup.string().email("Formato de email incorrecto").required("Este campo es requerido"),
                     username:Yup.string().required("Este campo es requerido"),
                     account_number:Yup.string().required("Este campo es requerido"),
@@ -103,7 +103,7 @@ const Clients = (role) => {
                 setYupSchema(Yup.object({
                     name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios"),
                     last_name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios"),
-                    document_number:Yup.string().required("Este campo es requerido").min(7,"número invalido: menos de 6 digitos").max(10,"número invalido: más de 10 digitos"),
+                    document_number:Yup.string().required("Este campo es requerido").matches(/^((\d{8})|(\d{10})|(\d{11})|(\d{6}-\d{5}))?$/,"Numero de cedula no valido"),
                     email:Yup.string().email("Formato de email incorrecto").required("Este campo es requerido"),
                     username:Yup.string().required("Este campo es requerido"),
                     password:Yup.string().required("Este campo es requerido").min(8,"La contraseña es muy corta").max(25),
@@ -132,7 +132,7 @@ const Clients = (role) => {
                 setYupSchema(Yup.object({
                     name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios"),
                     last_name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios"),
-                    document_number:Yup.string().required("Este campo es requerido").min(7,"número invalido: menos de 6 digitos").max(10,"número invalido: más de 10 digitos"),
+                    document_number:Yup.string().required("Este campo es requerido").matches(/^((\d{8})|(\d{10})|(\d{11})|(\d{6}-\d{5}))?$/,"Numero de cedula no valido"),
                     email:Yup.string().email("Formato de email incorrecto").required("Este campo es requerido"),
                     username:Yup.string().required("Este campo es requerido"),
                     account_number:Yup.string().required("Este campo es requerido"),
@@ -153,7 +153,7 @@ const Clients = (role) => {
                 setYupSchema(Yup.object({
                     name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios"),
                     last_name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios"),
-                    document_number:Yup.string().required("Este campo es requerido").min(7,"número invalido: menos de 6 digitos").max(10,"número invalido: más de 10 digitos"),
+                    document_number:Yup.string().required("Este campo es requerido").matches(/^((\d{8})|(\d{10})|(\d{11})|(\d{6}-\d{5}))?$/,"Numero de cedula no valido"),
                     email:Yup.string().email("Formato de email incorrecto").required("Este campo es requerido"),
                     username:Yup.string().required("Este campo es requerido"),
                     phone:Yup.string().required("Este campo es requerido").min(10,"número invalido: menos de 10 digitos").max(10,"número invalido: más de 10 digitos")
@@ -216,7 +216,7 @@ const Clients = (role) => {
                     
                 }).catch(error =>{
                     var error_data = error.response.data["error"] ;
-                    if(error_data === "Error de servidor" || error_data === "El role no coincide con ninguno registrado"){
+                    if(error_data === "Error de servidor" || error_data === "El id del role no coincide con ninguno registrado"|| error_data === "Ya existe este usuario"){
                         setMessage(error_data);
                         setError(true)
                         setTimeout(() => setError(false),4000);
@@ -286,7 +286,7 @@ const Clients = (role) => {
         <>
         <div className="App">
             <h1 className="pt-3">Clientes :  {role.role}</h1>
-                <div className="container-fluid">
+                <div className="container-fluid_">
                     <div className="mt-3">
                         <div className="col-md-4 offset-md-4">
                             <div className="d-grid mx-auto">
@@ -371,8 +371,7 @@ const Clients = (role) => {
                             id="last_name" 
                             name= "last_name" 
                             placeholder="Apellidos"
-                            onChange={formik.handleChange}
-                             
+                            onChange={formik.handleChange} 
                             value={formik.values.last_name} 
                         />
                     </div>

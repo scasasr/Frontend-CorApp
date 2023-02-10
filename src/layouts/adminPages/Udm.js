@@ -13,21 +13,21 @@ import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import HelpIcon from '@mui/icons-material/Help';
 import SaveIcon from '@mui/icons-material/Save';
-import StyleIcon from '@mui/icons-material/Style';
+import ThermostatAutoIcon from '@mui/icons-material/ThermostatAuto';
 
 //Conection to API
 import API from '../../services/http-common.js';
 
-const Categories = () =>{
+const Udm = () =>{
 
     const [error, setError] = useState(false);
     const [message, setMessage] = useState('');
     const [title,setTitle] = useState(''); 
     const [operation,setOperation] = useState('');
-    const [categoryId,setCategoryId] = useState('');
-    const [dataCategories,setDataCategories] = useState([]);
+    const [udmId,setUdmId] = useState('');
+    const [dataUdm,setDataUdm] = useState([]);
     const [initialValues,setInitialValues] = useState('');
-    const [categoryName,setCategoryName] = useState('');
+    const [udmName,setUdmName] = useState('');
 
 
     const[showModalDelete,setShowModalDelete] = useState('');
@@ -36,8 +36,8 @@ const Categories = () =>{
 
     const handleShowModalDelete = (id,name) => {
         setShowModalDelete(true);
-        setCategoryId(id);
-        setCategoryName(name);
+        setUdmId(id);
+        setUdmName(name);
     }
     
 
@@ -46,9 +46,9 @@ const Categories = () =>{
 
     const handleCloseModalForm = () => setShowModalForm(false);
 
-    const handleShowModalForm =(op,id, nameCategory) =>{
+    const handleShowModalForm =(op,id, nameUdm) =>{
         setShowModalForm(true);
-        setCategoryId(id);
+        setUdmId(id);
 
         if(op === 1){
             setTitle('Registrar categoria');
@@ -60,7 +60,7 @@ const Categories = () =>{
             setTitle('Editar categoria');
             setOperation('Edit');
             setInitialValues({
-                name:nameCategory
+                name:nameUdm
             })
 
         }
@@ -73,17 +73,17 @@ const Categories = () =>{
     const handleCloseSendVerification = () => setShowSendVerification(false);
 
 
-    const getCategories = async () =>{
-            return await API.get('categories/all').then((response) =>{
-            setDataCategories(JSON.parse(JSON.stringify(response.data)));
-            // console.log(dataCountries);
+    const getUdm = async () =>{
+            return await API.get('udm/all').then((response) =>{
+            setDataUdm(JSON.parse(JSON.stringify(response.data)));
+            // console.log(dataUdm);
         }).catch((error)=>{
             console.log(error);
         })
     };
 
     useEffect(()=>{
-        getCategories();
+        getUdm();
     },[showSendVerification]);
 
     const formik  = useFormik({
@@ -93,10 +93,10 @@ const Categories = () =>{
             name:Yup.string().required("Este campo es requerido").matches( /^[a-zA-ZÀ-ÿ\s]{1,40}$/,"Solo permite letras y espacios")
         }),
         onSubmit: values =>{
-            const categories_data =JSON.stringify(values, null, 2);
+            const udm_data =JSON.stringify(values, null, 2);
 
             if(operation === "Register"){
-                API.post('categories/add',categories_data).then((response)=>{
+                API.post('udm/add',udm_data).then((response)=>{
                     if(response.status === 201){
                         formik.resetForm();
                         setShowSendVerification(true);
@@ -104,7 +104,7 @@ const Categories = () =>{
                     
                 }).catch(error =>{
                     var error_data = error.response.data["error"] ;
-                    if(error_data === "Error de servidor" || error_data === "Ya existe esta categoria"){
+                    if(error_data === "Error de servidor" || error_data === "Ya existe esta unidad de medida"){
                         setMessage(error_data);
                         setError(true)
                         setTimeout(() => setError(false),3000);
@@ -117,7 +117,7 @@ const Categories = () =>{
                 });
 
             }else if(operation === "Edit"){
-                API.patch('categories/'+categoryId,categories_data).then((response)=>{
+                API.patch('udm/'+udmId,udm_data).then((response)=>{
                     if(response.status === 201){
                         // formik.resetForm();
                         // setSendVerification(true);
@@ -127,7 +127,7 @@ const Categories = () =>{
                     
                 }).catch(error =>{
                     var error_data = error.response.data["error"] ;
-                    if(error_data === "Error de servidor" || error_data === "No existe una categoria con este id"){
+                    if(error_data === "Error de servidor" || error_data === "No existe una unidad de medida con este id"){
                         setMessage(error_data);
                         setError(true)
                         setTimeout(() => setError(false),4000);
@@ -143,8 +143,8 @@ const Categories = () =>{
         },
     });
 
-    const deleteCategory= () =>{
-        API.delete('categories/'+categoryId).then((response)=>{
+    const deleteUdm= () =>{
+        API.delete('udm/'+udmId).then((response)=>{
             if(response.status === 201){
                 // formik.resetForm();
                 // setSendVerification(true);
@@ -154,7 +154,7 @@ const Categories = () =>{
             }
         }).catch(error =>{
             var error_data = error.response.data["error"] ;
-            if(error_data === "Error de servidor" || error_data === "No existe una categoria con este id"){
+            if(error_data === "Error de servidor" || error_data === "No existe una unidad de medida con este id"){
                 console.log(error_data);
                 // setMessage(error_data);
                 // setError(true)
@@ -175,7 +175,7 @@ const Categories = () =>{
     return(
         <>
             <div className="App">
-                <h1 className="pt-3">Categorias</h1>
+                <h1 className="pt-3">Unidad de medida</h1>
                     <div className="container-fluid">
                         <div className="mt-3">
                             <div className="col-md-4 offset-md-4">
@@ -200,17 +200,17 @@ const Categories = () =>{
                                     </thead>
                                     <tbody className="table-group-divider">
                                         {
-                                            dataCategories.map((category,id)=>(
-                                                <tr key={category._id}>
-                                                    <td>{category._id}</td>
-                                                    <td>{category.name}</td>
+                                            dataUdm.map((udm,id)=>(
+                                                <tr key={udm._id}>
+                                                    <td>{udm._id}</td>
+                                                    <td>{udm.name}</td>
                                                     <td>   
-                                                        <button onClick={()=> handleShowModalForm(2,category._id,category.name)} 
+                                                        <button onClick={()=> handleShowModalForm(2,udm._id,udm.name)} 
                                                         className="btn btn-warning">
                                                             <i><EditIcon/></i>
                                                         </button>
                                                         &nbsp;
-                                                        <button onClick={() => handleShowModalDelete(category._id,category.name)} className="btn btn-danger">
+                                                        <button onClick={() => handleShowModalDelete(udm._id,udm.name)} className="btn btn-danger">
                                                             <i><DeleteIcon/></i>
                                                         </button>  
                                                     </td>
@@ -228,13 +228,13 @@ const Categories = () =>{
                     <ModalBody>
                         <form className="form mt-0" onSubmit={formik.handleSubmit}>
                             <div className="input-group mb-3">
-                                <span className="input-group-text"><StyleIcon/></span>
+                                <span className="input-group-text"><ThermostatAutoIcon /></span>
                                 <input 
                                     className="form-control"
                                     type="text" 
                                     id="name" 
                                     name= "name"
-                                    placeholder="Nombre de la categoria"
+                                    placeholder="Nombre de la unidad de medida"
                                     onChange={formik.handleChange} 
                                     onBlur={formik.handleBlur}
                                     value={formik.values.name} 
@@ -260,17 +260,17 @@ const Categories = () =>{
                 {/* clients deletion confirmation modal*/}
                 <Modal show={showModalDelete} onHide={handleCloseModalDelete}>
                     <ModalHeader closeButton>
-                            <Modal.Title><HelpIcon/> Eliminar categoria</Modal.Title>
+                            <Modal.Title><HelpIcon/> Eliminar unidad de medida</Modal.Title>
                     </ModalHeader>
                     <ModalBody>
                         <div className="Container">
-                            <h5 className="mb-3">¿Está seguro que desea eliminar esta categoria con</h5>
-                            <h5 className="mb-2">Id: {categoryId}</h5>
-                            <h5>Nombre: {categoryName}</h5>
+                            <h5 className="mb-3">¿Está seguro que desea eliminar esta udm con</h5>
+                            <h5 className="mb-2">Id: {udmId}</h5>
+                            <h5>Nombre: {udmName}</h5>
                             
                         </div>
                         <div className="d-flex justify-content-around mt-3">
-                            <button onClick={deleteCategory} className="btn btn-success"><CheckIcon/>SI</button>
+                            <button onClick={deleteUdm} className="btn btn-success"><CheckIcon/>SI</button>
                             <button onClick={handleCloseModalDelete} className="btn btn-danger"><CloseIcon/>NO</button>
                         </div>
 
@@ -282,4 +282,4 @@ const Categories = () =>{
 
 };
 
-export default Categories;
+export default Udm;
