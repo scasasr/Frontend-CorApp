@@ -1,5 +1,8 @@
-import React from "react";
+import React, {useState} from "react";
 import '../style.css';
+import CountUp from "react-countup";
+import ScrollTrigger from 'react-scroll-trigger';
+
 
 import { Link} from "react-router-dom";
 import { Nav,Modal } from 'react-bootstrap';
@@ -18,6 +21,7 @@ import LockPersonIcon from '@mui/icons-material/LockPerson';
 
 import Cookies from "universal-cookie";
 
+
 const Main = () =>{
 
 
@@ -25,86 +29,14 @@ const Main = () =>{
 
     // cookie.set("logged",false,{ path: '/' });
 
+
+    const [countUp, setCountUp] = useState(false);
+
     return(
         <>
 
         {/*NAVBAR START*/}
         {Navbar_all("lock_person","how_to_reg","/login","RoleSelect","Entrar","Registrarse")}
-        {/*NAVBAR END*/}
-
-        {/*NAVBAR START*/}
-        {/* <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 bg-secondary d-none d-lg-block"> 
-                    <a href="" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
-                        <img  width="90" height="90" src={logo} alt="React Bootstrap logo"/> 
-                        <h1 class="m-2 display-3 text-primary d-inline-block align-top">CorApp</h1>
-                    </a>
-                </div>
-                <div class="col-lg-9">
-                    <div class="row bg-dark d-none d-lg-flex">
-                        <div class="col-lg-7 text-left text-white">
-                            <div class="h-100 d-inline-flex align-items-center border-right border-primary py-2 px-3">
-                                <i class="fa fa-envelope text-primary mr-2"></i>
-                                <small>contactenos@corappbastos.com</small>
-                            </div>
-                            <div class="h-100 d-inline-flex align-items-center py-2 px-2">
-                                <i class="fa fa-phone-alt text-primary mr-2"></i>
-                                <small>+57 316 380 6190</small>
-                            </div>
-                        </div>
-                        <div class="col-lg-5 text-right">
-                            <div class="d-inline-flex align-items-center pr-2">
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-instagram"></i>
-                                </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-youtube"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
-                        <a href="" class="navbar-brand d-block d-lg-none">
-                            <h1 class="m-0 display-4 text-primary">CorApp</h1>
-                        </a>
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto py-0">
-                                <Link to="/" class="nav-item nav-link active">inicio</Link>
-                                <Link to="/Buyer" class="nav-item nav-link">Comprar</Link>
-                                <a href="service.html" class="nav-item nav-link">Donaciones</a>
-                                <a href="project.html" class="nav-item nav-link">Impacto</a>
-                                <a href="contact.html" class="nav-item nav-link">Nosotros</a>
-                            </div>
-                            <Nav.Link as={Link} to="/login">
-                                < div class="btn btn-primary mr-3 d-none d-lg-block ">
-                                    <LockPersonIcon/>
-                                    Entrar 
-                                </div>
-                            </Nav.Link>
-                            <Nav.Link as={Link} to="/RoleSelect">
-                                < div class="btn btn-secondary mr-3 d-none d-lg-block ">
-                                    <HowToRegIcon/>
-                                    Registrarse 
-                                </div>
-                            </Nav.Link>
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </div> */}
         {/*NAVBAR END*/}
 
         {/*CARRUSEL START*/}
@@ -147,35 +79,44 @@ const Main = () =>{
         {/*CARRUSEL END*/}
 
         <div>
-            <div class="container-fluid_ py-5 style-background" >
-                <div class="container py-5">
-                    <div class="row">
-                        <div class="col-lg-7 pt-lg-5 pb-3">
-                            <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">¿Por qué elegirnos?</h6>
-                            <h1 class="mb-4 section-title"></h1>
-                            <p class="mb-4">Somos la primera plataforma a nivel mundial que permite la comercialización y donacion de alimentos en las centrales de abasto.</p>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <h1 class="text-secondary mb-2" data-toggle="counter-up">1500</h1>
-                                    <h6 class="font-weight-semi-bold mb-sm-4">Beneficiarios</h6>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h1 class="text-secondary mb-2" data-toggle="counter-up">400</h1>
-                                    <h6 class="font-weight-semi-bold mb-sm-4">Vendedores</h6>
-                                </div>
-                                <div class="col-sm-4">
-                                    <h1 class="text-secondary mb-2" data-toggle="counter-up">1600</h1>
-                                    <h6 class="font-weight-semi-bold mb-sm-4">Compradores</h6>
-                                </div>
-                            </div>
+            <div class="container-fluid_ py-5 style-background d-flex justify-content-around" >
+               
+                    
+                        <div class="col-lg-7 pt-lg-5 pb-3 pr-2 d-flex align-items-center">
+                            <div>
+                                <h6 class="text-secondary font-weight-semi-bold text-uppercase mb-3">¿Por qué elegirnos?</h6>
+                                <h1 class="mb-4 section-title"></h1>
+                                <p class="mb-4">Somos la primera plataforma a nivel mundial que permite la comercialización y donacion de alimentos en las centrales de abasto.</p>
+                                <ScrollTrigger onEnter={() => setCountUp(true)} onExit={() => setCountUp(false)}>
+                                    <div class="row mr-3">
+                                        <div class="col-sm-4">
+                                            <h1 class="text-secondary mb-2" >
+                                                {countUp && <CountUp start={0} end={1500} duration={2} delay={0}/>}
+                                                </h1>
+                                            <h6 class="font-weight-semi-bold mb-sm-4">Beneficiarios</h6>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <h1 class="text-secondary mb-2" >
+                                                {countUp && <CountUp start={0} end={400} duration={1.5} delay={0}/>}
+                                            </h1>
+                                            <h6 class="font-weight-semi-bold mb-sm-4">Vendedores</h6>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <h1 class="text-secondary mb-2">
+                                                {countUp && <CountUp start={0} end={1600} duration={2} delay={0}/>}
+                                            </h1>
+                                            <h6 class="font-weight-semi-bold mb-sm-4">Compradores</h6>
+                                        </div>
+                                    </div>
+                                </ScrollTrigger>
+                            </div>    
                         </div>
-                        <div class="col-lg-5" style={{minHeight:"500px"}}>
+                        
+                        <div class="col-lg-5 pl-3" style={{minHeight:"500px"}}>
                             <div class="position-relative h-100 rounded overflow-hidden ml-3">
                                 <img class="position-relative w-100 h-100 " src={feature1} style={{objectFit:"cover"}}/> 
                             </div>
                         </div>
-                    </div>
-                </div>
             </div>
 
 
