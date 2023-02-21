@@ -176,7 +176,7 @@ const Udm = () =>{
         <>
             <div className="App">
                 <h1 className="pt-3">Unidad de medida</h1>
-                    <div className="container-fluid">
+                    <div className="container-fluid_">
                         <div className="mt-3">
                             <div className="col-md-4 offset-md-4">
                                 <div className="d-grid mx-auto">
@@ -193,7 +193,7 @@ const Udm = () =>{
                                 <table className="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
+                                            {/* <th>id</th> */}
                                             <th>Nombre</th>
                                             <th></th>
                                         </tr>
@@ -202,7 +202,7 @@ const Udm = () =>{
                                         {
                                             dataUdm.map((udm,id)=>(
                                                 <tr key={udm._id}>
-                                                    <td>{udm._id}</td>
+                                                    {/* <td>{udm._id}</td> */}
                                                     <td>{udm.name}</td>
                                                     <td>   
                                                         <button onClick={()=> handleShowModalForm(2,udm._id,udm.name)} 

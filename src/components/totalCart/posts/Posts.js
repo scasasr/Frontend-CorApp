@@ -168,6 +168,7 @@ const Posts = () =>{
                             <h3 className="mt-2"><MyLocationIcon className="mr-1"/>Ubicación</h3>
                             <div className="d-flex justify-content-center mt-4">
                                 <GoogleMap
+                                    
                                     apiKey={"AIzaSyBFkZKPPLySYchQ4VJHFXczriU9BwmHawQ"}
                                     style={{height:"300px",width:"370px"}}
                                     zoom={15}

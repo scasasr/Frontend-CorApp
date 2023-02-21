@@ -10370,3 +10370,38 @@
 .LogOut{
   background-color: red;
 }
+
+.summary_container_1{
+  height: auto;
+  width: 800px;
+  border-radius: 10px;
+  background-color: #fff;
+  border-style:dashed;
+}
+
+
+.summary_container{
+  height: auto;
+  width: 795px;
+  border-radius: 10px;
+  background-color: #02a802;
+}
+
+
+
+.summary_container_2{
+  height: auto;
+  width: 395px;
+  border-radius: 10px;
+  background-color: #02a802;
+}
+
+.summary_container_3{
+  height: 300px;
+  width: 400px;
+  border-radius: 10px;
+  background-color: #fff;
+  border-style:dashed;
+}
+
+

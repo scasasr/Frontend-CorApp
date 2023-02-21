@@ -9,7 +9,6 @@ import { Snackbar,Alert } from "@mui/material";
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import AbcIcon from '@mui/icons-material/Abc';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import HelpIcon from '@mui/icons-material/Help';
@@ -276,7 +275,7 @@ const Places = () =>{
         <>
             <div className="App">
                 <h1 className="pt-3">Puestos</h1>
-                        <div className="container-fluid">
+                        <div className="container-fluid_">
                             <div className="mt-3">
                                 <div className="col-md-4 offset-md-4">
                                     <div className="d-grid mx-auto">
@@ -293,7 +292,7 @@ const Places = () =>{
                                     <table className="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>id</th>
+                                                {/* <th>id</th> */}
                                                 <th>Nombre</th>
                                                 <th>Latitude</th>
                                                 <th>Longitude</th>
@@ -306,7 +305,7 @@ const Places = () =>{
                                             {
                                                 placesData.map((place,id)=>(
                                                     <tr key={place._id}>
-                                                        <td>{place._id}</td>
+                                                        {/* <td>{place._id}</td> */}
                                                         <td>{place.name}</td>
                                                         <td>{place.latitude}</td>
                                                         <td>{place.longitude}</td>

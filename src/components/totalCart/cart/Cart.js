@@ -105,7 +105,7 @@ const Cart = () =>{
                       :(<>
                         <Link as={Link} to='/login'>
                           <div>
-                            <button className={style.btn_pay}>Pagar
+                            <button className={style.btn_pay}>Ir a pagar
                             </button>
                           </div>
                           

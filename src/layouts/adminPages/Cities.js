@@ -213,7 +213,7 @@ const Cities = () =>{
         <>
             <div className="App">
                 <h1 className="pt-3">Ciudades</h1>
-                        <div className="container-fluid">
+                        <div className="container-fluid_">
                             <div className="mt-3">
                                 <div className="col-md-4 offset-md-4">
                                     <div className="d-grid mx-auto">
@@ -230,7 +230,7 @@ const Cities = () =>{
                                     <table className="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>id</th>
+                                                {/* <th>id</th> */}
                                                 <th>Nombre</th>
                                                 <th>País</th>
                                                 <th>Código</th>
@@ -241,7 +241,7 @@ const Cities = () =>{
                                             {
                                                 citiesData.map((city,id)=>(
                                                     <tr key={city._id}>
-                                                        <td>{city._id}</td>
+                                                        {/* <td>{city._id}</td> */}
                                                         <td>{city.name}</td>
                                                         <td>{countriesData.map((country,id)=>{
                                                                 if(country._id === city.country){
