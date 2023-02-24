@@ -125,7 +125,7 @@ const Products = () =>{
        form.append('name',name);
        form.append('file',file,'form-data')
 
-       return axios.post("http://3.144.130.111:4000/imagesProducts/",form);
+       return axios.post("http://3.144.130.111:4000/uploadImages",form);
     }
 
 
