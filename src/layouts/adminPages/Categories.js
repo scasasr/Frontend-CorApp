@@ -176,7 +176,7 @@ const Categories = () =>{
         <>
             <div className="App">
                 <h1 className="pt-3">Categorias</h1>
-                    <div className="container-fluid">
+                    <div className="container-fluid_">
                         <div className="mt-3">
                             <div className="col-md-4 offset-md-4">
                                 <div className="d-grid mx-auto">
@@ -193,7 +193,7 @@ const Categories = () =>{
                                 <table className="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
+                                            {/* <th>id</th> */}
                                             <th>Nombre</th>
                                             <th></th>
                                         </tr>
@@ -202,7 +202,7 @@ const Categories = () =>{
                                         {
                                             dataCategories.map((category,id)=>(
                                                 <tr key={category._id}>
-                                                    <td>{category._id}</td>
+                                                    {/* <td>{category._id}</td> */}
                                                     <td>{category.name}</td>
                                                     <td>   
                                                         <button onClick={()=> handleShowModalForm(2,category._id,category.name)} 

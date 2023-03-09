@@ -213,7 +213,7 @@ const Squares = () =>{
         <>
             <div className="App">
                 <h1 className="pt-3">Plazas</h1>
-                        <div className="container-fluid">
+                        <div className="container-fluid_">
                             <div className="mt-3">
                                 <div className="col-md-4 offset-md-4">
                                     <div className="d-grid mx-auto">
@@ -230,7 +230,7 @@ const Squares = () =>{
                                     <table className="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>id</th>
+                                                {/* <th>id</th> */}
                                                 <th>Nombre</th>
                                                 <th>Ciudad</th>
                                                 <th>Código</th>
@@ -241,7 +241,7 @@ const Squares = () =>{
                                             {
                                                 squaresData.map((square,id)=>(
                                                     <tr key={square._id}>
-                                                        <td>{square._id}</td>
+                                                        {/* <td>{square._id}</td> */}
                                                         <td>{square.name}</td>
                                                         <td>{citiesData.map((city,id)=>{
                                                                 if(city._id === square.city){

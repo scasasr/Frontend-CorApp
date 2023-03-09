@@ -7,11 +7,12 @@ const ItemCart = ({item}) =>{
     const {deleteItemToCart,addItemToCart} = useContext(cartContext);
 
     const {id} = item;
+    const photo = item.photo
 
     return (
     <>
         <div className={style.cartItem}>
-            <img src={item.photo} alt={item.description}/>
+            <img src={photo} alt={item.description}/>
             <div className={style.dataContainer}>
                 <div className={style.left}>
                     <p>{item.description}</p>

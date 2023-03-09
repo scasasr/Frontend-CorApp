@@ -95,6 +95,7 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
         if(name_role === "vendedor"){
             return  (
                 <List>
+                    <Link to="/PostSeller">
                     <ListItem key={'posts'} disablePadding>
                     <ListItemButton>
                     <ListItemIcon>
@@ -102,6 +103,8 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
                     </ListItemIcon>
                     </ListItemButton>
                     </ListItem>
+                    </Link>
+                    
 
                     <ListItem key={'places'} disablePadding>
                     <ListItemButton>
@@ -212,61 +215,61 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
     return(
         <>
         {/*NAVBAR START*/}
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-3 bg-secondary d-none d-lg-block"> 
-                    <a href="/" class="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
+        <div className="container-fluid">
+            <div className="row">
+                <div className="col-lg-3 bg-secondary d-none d-lg-block"> 
+                    <a href="/" className="navbar-brand w-100 h-100 m-0 p-0 d-flex align-items-center justify-content-center">
                         <img  width="90" height="90" src={logo} alt="React Bootstrap logo"/> 
-                        <h1 class="m-2 display-3 text-primary d-inline-block align-top">CorApp</h1>
+                        <h1 className="m-2 display-3 text-primary d-inline-block align-top">CorApp</h1>
                     </a>
                 </div>
-                <div class="col-lg-9">
-                    <div class="row bg-dark d-none d-lg-flex">
-                        <div class="col-lg-7 text-left text-white">
-                            <div class="h-100 d-inline-flex align-items-center border-right border-primary py-2 px-3">
-                                <i class="fa fa-envelope text-primary mr-2"></i>
+                <div className="col-lg-9">
+                    <div className="row bg-dark d-none d-lg-flex">
+                        <div className="col-lg-7 text-left text-white">
+                            <div className="h-100 d-inline-flex align-items-center border-right border-primary py-2 px-3">
+                                <i className="fa fa-envelope text-primary mr-2"></i>
                                 <small>contactenos@corappbastos.com</small>
                             </div>
-                            <div class="h-100 d-inline-flex align-items-center py-2 px-2">
-                                <i class="fa fa-phone-alt text-primary mr-2"></i>
+                            <div className="h-100 d-inline-flex align-items-center py-2 px-2">
+                                <i className="fa fa-phone-alt text-primary mr-2"></i>
                                 <small>+57 316 380 6190</small>
                             </div>
                         </div>
-                        <div class="col-lg-5 text-right">
-                            <div class="d-inline-flex align-items-center pr-2">
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-facebook-f"></i>
+                        <div className="col-lg-5 text-right">
+                            <div className="d-inline-flex align-items-center pr-2">
+                                <a className="text-primary p-2" href="">
+                                    <i className="fab fa-facebook-f"></i>
                                 </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-twitter"></i>
+                                <a className="text-primary p-2" href="">
+                                    <i className="fab fa-twitter"></i>
                                 </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-linkedin-in"></i>
+                                <a className="text-primary p-2" href="">
+                                    <i className="fab fa-linkedin-in"></i>
                                 </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-instagram"></i>
+                                <a className="text-primary p-2" href="">
+                                    <i className="fab fa-instagram"></i>
                                 </a>
-                                <a class="text-primary p-2" href="">
-                                    <i class="fab fa-youtube"></i>
+                                <a className="text-primary p-2" href="">
+                                    <i className="fab fa-youtube"></i>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <nav class="navbar navbar-expand-lg bg-white navbar-light p-0">
-                        <a href="" class="pb-2 pt-1 navbar-brand d-block d-lg-none d-flex align-items-center justify-content-center">
+                    <nav className="navbar navbar-expand-lg bg-white navbar-light p-0">
+                        <a href="" className="pb-2 pt-1 navbar-brand d-block d-lg-none d-flex align-items-center justify-content-center">
                             <img className="mr-2 mt-0 pt-0" width="30" height="30" src={logo} alt="React Bootstrap logo"/> 
-                            <h5 class="m-0 display-4 text-primary">CorApp</h5>
+                            <h5 className="m-0 display-4 text-primary">CorApp</h5>
                         </a>
-                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                            <span class="navbar-toggler-icon"></span>
+                        <button type="button" className="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                            <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                            <div class="navbar-nav mr-auto py-0">
-                                <Link to="/" class="nav-item nav-link" >inicio</Link>
-                                <Link to="/Buyer" class="nav-item nav-link">Comprar</Link>
-                                <Link to="/Donation" class="nav-item nav-link">Donaciones</Link>
-                                <Link to="/Social" class="nav-item nav-link">Impacto</Link>
-                                <Link to="/Aboutus" class="nav-item nav-link">Nosotros</Link>
+                        <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                            <div className="navbar-nav mr-auto py-0">
+                                <Link to="/" className="nav-item nav-link" >inicio</Link>
+                                <Link to="/Buyer" className="nav-item nav-link">Comprar</Link>
+                                <Link to="/Donation" className="nav-item nav-link">Donaciones</Link>
+                                <Link to="/Social" className="nav-item nav-link">Impacto</Link>
+                                <Link to="/Aboutus" className="nav-item nav-link">Nosotros</Link>
                             </div>
                             {
                                 // console.log((logged === true))
@@ -285,12 +288,12 @@ const Navbar_all = (iconBtn_1,iconBtn_2,pathBtn_1,pathBtn_2,textBtn_1,textBtn_2)
                                 ):(
                                     <>
                                         <Nav.Link as={Link} to={pathBtn_1}>
-                                            < div class="btn btn-primary mr-3 d-none d-lg-block ">
+                                            < div className="btn btn-primary mr-3 d-none d-lg-block ">
                                                 <Icon className="pt-1 mr-1">{iconBtn_1}</Icon>{textBtn_1}   
                                             </div>
                                         </Nav.Link>
                                         <Nav.Link as={Link} to={pathBtn_2}>
-                                            < div class="btn btn-secondary mr-3 d-none d-lg-block ">
+                                            < div className="btn btn-secondary mr-3 d-none d-lg-block ">
                                                 <Icon className="pt-1 mr-1">{iconBtn_2}</Icon>{textBtn_2}
                                             </div>
                                         </Nav.Link>

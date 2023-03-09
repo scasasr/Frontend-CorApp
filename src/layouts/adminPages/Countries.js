@@ -182,7 +182,7 @@ const Countries = () =>{
         <>
             <div className="App">
                 <h1 className="pt-3">Paises</h1>
-                    <div className="container-fluid">
+                    <div className="container-fluid_">
                         <div className="mt-3">
                             <div className="col-md-4 offset-md-4">
                                 <div className="d-grid mx-auto">
@@ -199,7 +199,7 @@ const Countries = () =>{
                                 <table className="table table-bordered">
                                     <thead>
                                         <tr>
-                                            <th>id</th>
+                                            {/* <th>id</th> */}
                                             <th>Nombre</th>
                                             <th>Código</th>
                                             <th></th>
@@ -209,7 +209,7 @@ const Countries = () =>{
                                         {
                                             dataCountries.map((country,id)=>(
                                                 <tr key={country._id}>
-                                                    <td>{country._id}</td>
+                                                    {/* <td>{country._id}</td> */}
                                                     <td>{country.name}</td>
                                                     <td>{country.code}</td>
                                                     <td>   

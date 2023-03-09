@@ -212,7 +212,7 @@ const Warehouse = () =>{
         <>
             <div className="App">
                 <h1 className="pt-3">Bodegas</h1>
-                        <div className="container-fluid">
+                        <div className="container-fluid_">
                             <div className="mt-3">
                                 <div className="col-md-4 offset-md-4">
                                     <div className="d-grid mx-auto">
@@ -229,7 +229,7 @@ const Warehouse = () =>{
                                     <table className="table table-bordered">
                                         <thead>
                                             <tr>
-                                                <th>id</th>
+                                                {/* <th>id</th> */}
                                                 <th>Numero</th>
                                                 <th>Plaza</th>
                                                 <th>Código</th>
@@ -240,7 +240,7 @@ const Warehouse = () =>{
                                             {
                                                 warehousesData.map((warehouse,id)=>(
                                                     <tr key={warehouse._id}>
-                                                        <td>{warehouse._id}</td>
+                                                        {/* <td>{warehouse._id}</td> */}
                                                         <td>{warehouse.number}</td>
                                                         <td>{squaresData.map((square,id)=>{
                                                                 if(square._id === warehouse.square){

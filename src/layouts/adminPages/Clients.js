@@ -24,6 +24,7 @@ import PaymentIcon from '@mui/icons-material/Payment';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
 import HelpIcon from '@mui/icons-material/Help';
+import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 
 const Clients = (role) => {
     const [error, setError] = useState(false);
@@ -52,7 +53,7 @@ const Clients = (role) => {
 
     const handleCloseModalForm = () => setShowModalForm(false);
 
-    const handleShowModalForm = (op,id,name_,lastname_,documentNumber_,email_,phone_,username_,accountNumber_) => {
+    const handleShowModalForm = (op,id,name_,lastname_,documentNumber_,email_,phone_,username_,cluster_,accountNumber_) => {
         setShowModalForm(true);
         setUserId(id);
         if(op === 1){
@@ -69,6 +70,7 @@ const Clients = (role) => {
                     passwordVerification:"",
                     phone:"",
                     role_name:roleName,
+                    cluster:'',
                     document_type:'',
                     account_number:''
                 })  
@@ -97,6 +99,7 @@ const Clients = (role) => {
                     passwordVerification:"",
                     phone:"",
                     role_name:roleName,
+                    cluster:'',
                     document_type:''
                 })
 
@@ -126,6 +129,7 @@ const Clients = (role) => {
                     email:email_,
                     username:username_,
                     phone:phone_,
+                    cluster:cluster_,
                     account_number:accountNumber_
                 })  
 
@@ -147,6 +151,7 @@ const Clients = (role) => {
                     document_number:documentNumber_,
                     email:email_,
                     username:username_,
+                    cluster:cluster_,
                     phone:phone_
                 })
 
@@ -308,6 +313,7 @@ const Clients = (role) => {
                                         <th>Nombre</th>
                                         <th>Email</th>
                                         <th>Telefono</th>
+                                        <th>Grupo</th>
                                         {(roleName ==="vendedor") ? (<th># cuenta</th>):(<></>)}
                                         <th></th>
                                     </tr>
@@ -321,6 +327,7 @@ const Clients = (role) => {
                                                 <td>{client.name +" "+client.last_name}</td>
                                                 <td>{client.email}</td>
                                                 <td>{client.phone}</td>
+                                                <td>{client.cluster}</td>
                                                 {(roleName==="vendedor") ? (<td>{client.account_number}</td>):(<></>)}
                                                 <td>   
                                                     <button onClick={()=> handleShowModalForm(2,client._id,client.name,client.last_name,client.document_number,
@@ -515,7 +522,19 @@ const Clients = (role) => {
                         {formik.touched.passwordVerification && formik.errors.passwordVerification ? <div className="error mb-2">{formik.errors.passwordVerification}</div> : null}
                         </>
                         ):
-                    (<></>)} 
+                    (<></>)}
+                    
+                    <div className="input-group mb-3">
+                        <span className="input-group-text"><SupervisedUserCircleIcon/></span>
+                        <select name="cluster" id="cluster" className="form-control" aria-label="Default select example"
+                            defaultValue='placeholder' onChange={formik.handleChange}  onBlur={formik.handleBlur}>
+                            <option value='placeholder' disabled>Selecciona uno</option>
+                            <option value="friends">friends</option>
+                            <option value="business">Business</option>
+                        </select>
+                    </div>
+                    
+
                     <div> 
                         <button className="btn btn-success" type="submit"><SaveIcon className="mr-1"/>Guardar</button>
                     </div>

@@ -135,7 +135,7 @@ const Login = () =>{
                     {formik.touched.password && formik.errors.password ? <div className="error">{formik.errors.password}</div> : null}
                     
                     <div> 
-                    <button className="btn btn-primary"type="submit">Enviar</button>
+                    <button className="btn btn-primary"type="submit">Entrar</button>
                     </div>
 
                     {error && <p className="error">{message}</p>}

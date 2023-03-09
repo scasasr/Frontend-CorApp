@@ -4,11 +4,6 @@ import {  Route, Routes } from "react-router-dom";
 import '../components/adminView/style.scss'
 
 
-
-//cookie component import
-import Cookies from "universal-cookie";
-
-
 import SidebarAdmin from "../components/adminView/SidebarAdmin.js";
 import Clients from "./adminPages/Clients.js";
 import Countries from "./adminPages/Countries.js";
@@ -24,8 +19,6 @@ import Qualities from "./adminPages/Qualities.js";
 import Navbar_all from "../components/Navbar.js";
 
 const Admin = () => {
-    var cookie = new Cookies();
-
     return(
         <>
         {Navbar_all("arrow_back","lock_person","/","/login","Volver","Entrar")}
