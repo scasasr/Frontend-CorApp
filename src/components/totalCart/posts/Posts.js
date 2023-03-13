@@ -5,7 +5,6 @@ import { Button, Modal } from 'react-bootstrap';
 import API from '../../../services/http-common.js'
 import { cartContext } from "../context/CartContext.js";
 import {  Divider } from "@mui/material";
-import GoogleMap  from "simple-react-google-maps";
 
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import DescriptionIcon from '@mui/icons-material/Description';
@@ -165,23 +164,8 @@ const Posts = () =>{
                             </div>
                             <Divider/>
                             <h3 className="mt-2"><MyLocationIcon className="mr-1"/>Ubicación</h3>
-                            <div className="d-flex justify-content-center mt-4">
-                                <GoogleMap
-                                    
-                                    apiKey={"AIzaSyBFkZKPPLySYchQ4VJHFXczriU9BwmHawQ"}
-                                    style={{height:"300px",width:"370px"}}
-                                    zoom={15}
-                                    center={{
-                                        lat:Number(latitude),
-                                        lng:Number(longitude),
-                                    }}
-                                    markers={[
-                                        {lat:Number(latitude),
-                                        lng:Number(longitude),}
-                                    ]}
-                                />
-                            </div>
-                        
+                            {/*mapa */}
+                            
                         </div> 
                     </Modal.Body>
                 </div>
