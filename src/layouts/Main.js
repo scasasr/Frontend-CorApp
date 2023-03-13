@@ -9,7 +9,7 @@ import { Nav,Modal } from 'react-bootstrap';
 import Navbar_all from "../components/Navbar.js";
 
 //images
-import logo from '../assets/logo.png';
+// import logo from '../assets/logo.png';
 import carrusel_img1 from '../assets/N1.jpg';
 import feature1 from '../assets/S1.jpg';
 

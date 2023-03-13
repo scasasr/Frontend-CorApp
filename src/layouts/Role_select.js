@@ -1,7 +1,5 @@
 import React from "react";
-import { useState } from "react";
-import { Link,useNavigate} from "react-router-dom";
-import { Nav,Modal } from 'react-bootstrap';
+import { Link} from "react-router-dom";
 import { Paper } from "@mui/material";
 import Navbar_all from '../components/Navbar.js'
 

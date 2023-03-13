@@ -12,9 +12,6 @@ import API from "../services/http-common.js";
 import Cookies from "universal-cookie";
 
 
-import { Link } from "react-router-dom";
-
-
 const Bill = () =>{
     //cookie
     var cookie = new Cookies();

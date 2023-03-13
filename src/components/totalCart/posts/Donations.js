@@ -1,5 +1,4 @@
-import React from "react";
-import { useState , useEffect} from "react";
+import React, { useState , useEffect}from "react";
 import style from'./style.module.scss';
 import { Button, Modal } from 'react-bootstrap';
 
